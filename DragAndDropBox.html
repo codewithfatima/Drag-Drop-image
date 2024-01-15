@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragAndDrop in Javascript</title>
+</head>
+<style>
+    body{
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #222020;
+
+    }
+    .box{
+        position: relative;
+        height: 200px;
+        width: 200px;
+        margin: 0 10px;
+        border-radius: 14px;
+        border: 4px solid #a52a2a;
+        display:inline-block;
+        cursor: pointer;
+    }
+    .box .image{
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        background-size: cover;
+        background-position: center;
+        background-image: url("R.jpg");
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="image" draggable="true"></div>
+    </div>
+    <div class="box"></div>
+
+    <script>
+    const boxes = document.querySelectorAll(".box");
+    const image = document.querySelector("image");
+
+
+    boxes.forEach((box)=>{
+        box.addEventListener("dragover" , (e) => {
+            e.preventDefault();
+        });
+        box.addEventListener("drop" , () => {
+            box.appendChild(image);
+        });
+    });
+    </script>
+</body>
+</html>
